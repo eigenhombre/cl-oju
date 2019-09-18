@@ -1,0 +1,6 @@
+* =cl-oju=
+
+A few Clojure idioms I missed from Common Lisp.
+
+Probably there are better libraries than this you should use.
+
