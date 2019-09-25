@@ -6,6 +6,7 @@
            :drop
            :frequencies
            :interpose
+           :juxt
            :partition-all
            :rand-nth
            :rand-int
@@ -26,8 +27,10 @@
                           :if-exists :supersede)
     (write-string s stream)))
 
-(defun range (n)
-  (loop for x upto (1- n) collect x))
+(defun range (n &optional m)
+  (if m
+      (loop for x from n upto (1- m) collect x)
+      (loop for x upto (1- n) collect x)))
 
 (defun take (n l)
   (loop for x in l repeat n collect x))
@@ -74,3 +77,10 @@
 
 (defun repeatedly (n f)
   (loop repeat n collect (funcall f)))
+
+(defun juxt (&rest fs)
+  (lambda (x) (loop for f in fs collect (funcall f x))))
+
+(dotests
+ (test= (funcall (juxt #'car #'cdr) '(1 2 3))
+        '(1 (2 3))))
