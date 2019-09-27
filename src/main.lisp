@@ -1,17 +1,19 @@
 (defpackage cl-oju
   (:use :cl :trivialtests)
-  (:export :slurp
-           :spit
-           :take
+  (:export :comment
            :drop
            :frequencies
            :interpose
            :juxt
            :partition-all
-           :rand-nth
            :rand-int
+           :rand-nth
            :range
-           :repeatedly))
+           :repeatedly
+           :slurp
+           :spit
+           :take))
+
 (in-package :cl-oju)
 
 (defun slurp (infile)
@@ -29,11 +31,13 @@
 
 (defun range (n &optional m)
   (if m
-      (loop for x from n upto (1- m) collect x)
-      (loop for x upto (1- n) collect x)))
+      (loop
+         for x from (the fixnum n) upto (1- (the fixnum m))
+         collect x)
+      (loop for x upto (1- (the fixnum n)) collect x)))
 
 (defun take (n l)
-  (loop for x in l repeat n collect x))
+  (loop for x in l repeat (the fixnum n) collect x))
 
 (defun drop (n l)
   (nthcdr n l))
@@ -43,10 +47,19 @@
         '(3 4 5 6 7 8 9)))
 
 (defun rand-nth (l)
+  ;; Not sure how to optimize this: I want to support both lists and
+  ;; arrays:
   (nth (random (length l)) l))
 
 (defun interpose (sep coll)
-  (cdr (loop for x in coll append (list sep x))))
+  ;;(cdr (loop for x in coll append (list sep x)))
+  ;; Really nice solution, adapted from `coredump`
+  ;; (https://stackoverflow.com/questions/58093923/\
+  ;; how-can-i-paste-a-element-between-all-elements-of-a-list):
+  (loop
+     for (x . xs) on coll
+     collect x
+     when xs collect sep))
 
 (dotests
  (test= (interpose :sep nil) nil)
@@ -68,19 +81,25 @@
 (defun frequencies (lst)
   (let ((m (make-hash-table :test #'equalp)))
     (loop for e in lst
-       do (incf (gethash e m 0)))
+       do (incf (the fixnum (gethash e m 0))))
     (loop for k being the hash-key of m
        using (hash-value v)
        collect (list k v))))
 
-(defun rand-int (n) (random n))
+(defun rand-int (n) (random (the fixnum n)))
 
 (defun repeatedly (n f)
-  (loop repeat n collect (funcall f)))
+  (loop repeat (the fixnum n)
+     collect (funcall (the function f))))
 
 (defun juxt (&rest fs)
-  (lambda (x) (loop for f in fs collect (funcall f x))))
+  (lambda (x)
+    (loop for f in fs collect (funcall
+                               (the function f) x))))
 
 (dotests
  (test= (funcall (juxt #'car #'cdr) '(1 2 3))
         '(1 (2 3))))
+
+(defmacro comment (&rest ign)
+  (declare (ignore ign)))
