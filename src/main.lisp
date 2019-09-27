@@ -6,6 +6,7 @@
            :interpose
            :juxt
            :partition-all
+           :partition-n
            :rand-int
            :rand-nth
            :range
