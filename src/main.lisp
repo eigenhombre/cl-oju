@@ -129,15 +129,24 @@
 (defmacro comment (&rest ign)
   (declare (ignore ign)))
 
+(defun cmp (a b)
+  (cond ((and (numberp a) (numberp b)) (< a b))
+        ((and (stringp a) (stringp b)) (string< a b))
+        (t (error (format nil "Don't know how to compare ~a and ~a!"
+                          a b)))))
+
 (defun sort-by (fn coll)
-  (sort (copy-seq coll) #'< :key fn))
+  (sort (copy-seq coll) #'cmp :key fn))
 
 (dotests
  (test= (sort-by #'car '((2 3) (1 1)))
         '((1 1) (2 3)))
  (test= (sort-by (lambda (x) (parse-integer (car x)))
                  '(("2" 3) ("1" 1)))
-        '(("1" 1) ("2" 3))))
+        '(("1" 1) ("2" 3)))
+ (test= (sort-by #'first
+                 '(("b" 3) ("a" 1)))
+        '(("a" 1) ("b" 3))))
 
 (defun group-by (fn coll)
   (let ((ret (make-hash-table :test #'equal)))
