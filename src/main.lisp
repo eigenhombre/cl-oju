@@ -11,6 +11,7 @@
            :rand-nth
            :range
            :repeatedly
+           :sort-by
            :slurp
            :spit
            :take))
@@ -126,3 +127,13 @@
 
 (defmacro comment (&rest ign)
   (declare (ignore ign)))
+
+(defun sort-by (fn coll)
+  (sort (copy-seq coll) #'< :key fn))
+
+(dotests
+ (test= (sort-by #'car '((2 3) (1 1)))
+        '((1 1) (2 3)))
+ (test= (sort-by (lambda (x) (parse-integer (car x)))
+                 '(("2" 3) ("1" 1)))
+        '(("1" 1) ("2" 3))))
