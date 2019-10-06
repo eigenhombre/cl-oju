@@ -140,7 +140,7 @@
         '(("1" 1) ("2" 3))))
 
 (defun group-by (fn coll)
-  (let ((ret (make-hash-table)))
+  (let ((ret (make-hash-table :test #'equal)))
     (loop for item in coll do
          (let+ ((k (funcall fn item))
                 (existing (gethash k ret)))
@@ -150,4 +150,13 @@
 
 (dotests
  (test= (group-by #'evenp '(1 2 3 4 5 6))
-        '((NIL (5 3 1)) (T (6 4 2)))))
+        '((NIL (5 3 1)) (T (6 4 2))))
+ (test= (group-by (lambda (x) (nth 5 x))
+                  '((1 _ _ _ _ "x")
+                    (2 _ _ _ _ "y")
+                    (3 _ _ _ _ "x")
+                    (4 _ _ _ _ "y")
+                    (5 _ _ _ _ "x")
+                    (6 _ _ _ _ "y")))
+        '(("x" ((5 _ _ _ _ "x") (3 _ _ _ _ "x") (1 _ _ _ _ "x")))
+          ("y" ((6 _ _ _ _ "y") (4 _ _ _ _ "y") (2 _ _ _ _ "y"))))))
