@@ -1,8 +1,9 @@
 (defpackage cl-oju
-  (:use :cl :trivialtests)
+  (:use :cl :trivialtests :let-plus)
   (:export :comment
            :drop
            :frequencies
+           :group-by
            :interpose
            :juxt
            :partition-all
@@ -137,3 +138,16 @@
  (test= (sort-by (lambda (x) (parse-integer (car x)))
                  '(("2" 3) ("1" 1)))
         '(("1" 1) ("2" 3))))
+
+(defun group-by (fn coll)
+  (let ((ret (make-hash-table)))
+    (loop for item in coll do
+         (let+ ((k (funcall fn item))
+                (existing (gethash k ret)))
+           (setf (gethash k ret) (cons item existing))))
+    (loop for k being the hash-keys in ret using (hash-value v)
+       collect (list k v))))
+
+(dotests
+ (test= (group-by #'evenp '(1 2 3 4 5 6))
+        '((NIL (5 3 1)) (T (6 4 2)))))
