@@ -40,7 +40,14 @@
       (loop for x upto (1- (the fixnum n)) collect x)))
 
 (defun take (n l)
-  (loop for x in l repeat (the fixnum n) collect x))
+  (if (stringp l)
+      (loop for x across l repeat (the fixnum n) collect x)
+      (loop for x in l repeat (the fixnum n) collect x)))
+
+(dotests
+ (test= (take 9 "this is a test")
+        ;;=>
+        '(#\t #\h #\i #\s #\  #\i #\s #\  #\a)))
 
 (defun drop (n l)
   (nthcdr n l))
