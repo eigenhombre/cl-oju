@@ -176,3 +176,12 @@
                     (6 _ _ _ _ "y")))
         '(("x" ((5 _ _ _ _ "x") (3 _ _ _ _ "x") (1 _ _ _ _ "x")))
           ("y" ((6 _ _ _ _ "y") (4 _ _ _ _ "y") (2 _ _ _ _ "y"))))))
+
+(defun partial (fun &rest xs)
+  (lambda (&rest inner-xs)
+    (apply fun
+           (append xs inner-xs))))
+
+(dotests
+ (test= (funcall (partial #'+)) 0)
+ (test= (funcall (partial #'* 2) 3) 6))
