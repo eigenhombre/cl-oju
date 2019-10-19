@@ -82,6 +82,19 @@
  (test= (interpose :sep '(1)) '(1))
  (test= (interpose :sep '(1 2 3)) '(1 :SEP 2 :SEP 3)))
 
+(defun interleave (lst1 lst2)
+  (let ((ret))
+    (loop
+       for l1 in lst1
+       for l2 in lst2
+       do (setf ret (cons l2 (cons l1 ret))))
+    (nreverse ret)))
+
+(dotests
+ (test= (interleave '(1 2 3) '(:a :b :c))
+        ;;=>
+        '(1 :a 2 :b 3 :c)))
+
 (defun partition-all (cell-size step-size lst)
   (loop for cell on lst
      by #'(lambda (lst1) (nthcdr step-size lst1))
