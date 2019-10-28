@@ -4,6 +4,7 @@
            :drop
            :frequencies
            :group-by
+           :interleave
            :interpose
            :juxt
            :partition-all
