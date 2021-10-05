@@ -25,17 +25,8 @@
       (loop for x across l repeat (the fixnum n) collect x)
       (loop for x in l repeat (the fixnum n) collect x)))
 
-(dotests
- (test= (take 9 "this is a test")
-        ;;=>
-        '(#\t #\h #\i #\s #\  #\i #\s #\  #\a)))
-
 (defun drop (n l)
   (nthcdr n l))
-
-(dotests
- (test= (drop 3 (range 10))
-        '(3 4 5 6 7 8 9)))
 
 (defun fast-length (coll)
   ;; Is this a good idea?
