@@ -2,6 +2,12 @@
 
 (defun run-tests () (1am:run))
 
+(test comment
+  (is (null (cl-oju:comment)))
+  (is (null (cl-oju:comment ())))
+  (is (null (cl-oju:comment (a b c))))
+  (is (null (cl-oju:comment (/ 1 0)))))
+
 (test range
   (is (equal '(0 1 2) (cl-oju:range 3)))
   (is (equal '(3 4 5) (cl-oju:range 3 6)))
