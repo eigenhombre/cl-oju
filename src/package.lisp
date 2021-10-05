@@ -8,6 +8,7 @@
    :interleave
    :interpose
    :juxt
+   :partial
    :partition-all
    :partition-n
    :rand-int
