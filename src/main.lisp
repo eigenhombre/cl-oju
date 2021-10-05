@@ -1,23 +1,3 @@
-(defpackage cl-oju
-  (:use :cl :trivialtests :let-plus)
-  (:export :comment
-           :drop
-           :frequencies
-           :group-by
-           :interleave
-           :interpose
-           :juxt
-           :partition-all
-           :partition-n
-           :rand-int
-           :rand-nth
-           :range
-           :repeatedly
-           :sort-by
-           :slurp
-           :spit
-           :take))
-
 (in-package :cl-oju)
 
 (defun slurp (infile)
@@ -60,13 +40,15 @@
 (defun fast-length (coll)
   ;; Is this a good idea?
   (if (vectorp coll)
-      (length (the vector coll))
+      (array-dimension coll 0)
       (length coll)))
 
 (defun rand-nth (l)
   ;; Not sure how to optimize this: I want to support both lists and
   ;; arrays:
-  (nth (random (fast-length l)) l))
+  (if (vectorp l)
+      (aref l (random (fast-length l)))
+      (nth (random (fast-length l)) l)))
 
 (defun interpose (sep coll)
   ;;(cdr (loop for x in coll append (list sep x)))
@@ -74,9 +56,9 @@
   ;; (https://stackoverflow.com/questions/58093923/\
   ;; how-can-i-paste-a-element-between-all-elements-of-a-list):
   (loop
-     for (x . xs) on coll
-     collect x
-     when xs collect sep))
+    for (x . xs) on coll
+    collect x
+    when xs collect sep))
 
 (dotests
  (test= (interpose :sep nil) nil)
