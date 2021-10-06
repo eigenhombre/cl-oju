@@ -13,22 +13,26 @@ Probably there are better libraries than this you should use; in the
 mean time, this package exports:
 
 #+BEGIN_SRC
-             comment
-             drop
-             frequencies
-             group-by
-             interpose
-             juxt
-             partition-all
-             partition-n
-             rand-int
-             rand-nth
-             range
-             repeatedly
-             sort-by
-             slurp
-             spit
-             take
+comment
+drop
+frequencies
+group-by
+interleave
+interpose
+juxt
+neg?
+partial
+partition-all
+partition-n
+pos?
+rand-int
+rand-nth
+range
+repeatedly
+slurp
+sort-by
+spit
+take
 #+END_SRC
 
 

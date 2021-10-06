@@ -1,5 +1,5 @@
 (defpackage cl-oju
-  (:use :cl :trivialtests :let-plus)
+  (:use :cl :let-plus)
   (:export
    :comment
    :drop
@@ -8,9 +8,11 @@
    :interleave
    :interpose
    :juxt
+   :neg?
    :partial
    :partition-all
    :partition-n
+   :pos?
    :rand-int
    :rand-nth
    :range

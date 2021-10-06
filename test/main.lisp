@@ -71,3 +71,11 @@
 (test partial
   (is (equal (funcall (cl-oju:partial #'+)) 0))
   (is (equal (funcall (cl-oju:partial #'* 2) 3) 6)))
+
+(test pos-neg-test
+  (is (cl-oju:pos? 1))
+  (is (not (cl-oju:pos? 0)))
+  (is (not (cl-oju:pos? -1)))
+  (is (cl-oju:neg? -1))
+  (is (not (cl-oju:neg? 0)))
+  (is (not (cl-oju:neg? 1))))

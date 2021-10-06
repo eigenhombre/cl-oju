@@ -119,3 +119,6 @@
   (lambda (&rest inner-xs)
     (apply fun
            (append xs inner-xs))))
+
+(defun pos? (n) (< 0 n))
+(defun neg? (n) (< n 0))
