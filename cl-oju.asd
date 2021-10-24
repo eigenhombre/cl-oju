@@ -9,8 +9,7 @@
                 :serial t
                 :components
                 ((:file "package")
-                 (:file "main")
-                 (:file "maps" :depends-on ("main")))))
+                 (:file "main"))))
   :description "Some Clojure-ish thingies")
 
 (defsystem :cl-oju/test
