@@ -122,3 +122,6 @@
 
 (defun pos? (n) (< 0 n))
 (defun neg? (n) (< n 0))
+
+(defun filter (f l)
+  (loop for x in l when (funcall f x) collect x))

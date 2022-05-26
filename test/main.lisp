@@ -79,3 +79,14 @@
   (is (cl-oju:neg? -1))
   (is (not (cl-oju:neg? 0)))
   (is (not (cl-oju:neg? 1))))
+
+(test filter
+  (is (null ()))
+  (is (equal (cl-oju:range 3)
+             (cl-oju:range 3)))
+  (is (null (cl-oju:filter (constantly nil)
+                           (cl-oju:range 10))))
+  (is (equal (cl-oju:range 10)
+             (cl-oju:filter (constantly t)
+                            (cl-oju:range 10))))
+  (is (equal '(1 3 5) (cl-oju:filter #'oddp (cl-oju:range 6)))))

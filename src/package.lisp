@@ -3,6 +3,7 @@
   (:export
    :comment
    :drop
+   :filter
    :frequencies
    :group-by
    :interleave
