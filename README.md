@@ -44,5 +44,14 @@ Supported operators:
     spit
     take
 
+# Usage
 
+This is not on Quicklisp (yet).  Check it out from source and put it in `LISP_HOME`.  Then,
 
+    (ql:quickload 'cl-oju)
+
+# Testing / Building
+
+`make test` should be sufficient to run the tests.  You can also run
+them in Docker (`make docker`), which is what the CI for this project
+does.
