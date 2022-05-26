@@ -52,6 +52,8 @@ This is not on Quicklisp (yet).  Check it out from source and put it in `LISP_HO
 
 # Testing / Building
 
-`make test` should be sufficient to run the tests.  You can also run
-them in Docker (`make docker`), which is what the CI for this project
-does.
+Only tested in SBCL, but the code is general enough that it should
+work in any compliant Common Lisp implementation.  `make test` should
+be sufficient to run the tests.  You can also run them in Docker
+(`make docker`), which is what the CI for this project does.  You'll
+obviously need SBCL, `make` and Docker installed for this.
