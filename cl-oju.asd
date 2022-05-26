@@ -2,14 +2,14 @@
   :version "0.0.1"
   :author "John Jacobsen"
   :license "TBD"
-  :depends-on ("trivialtests" "let-plus")
+  :depends-on ("let-plus")
   :serial t
   :in-order-to ((asdf:test-op (asdf:test-op :cl-oju/test)))
   :components ((:module "src"
                 :serial t
                 :components
-                ((:file "package")
-                 (:file "main"))))
+                        ((:file "package")
+                         (:file "main"))))
   :description "Some Clojure-ish thingies")
 
 (defsystem :cl-oju/test

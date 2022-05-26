@@ -1,8 +1,9 @@
-*.fasl
 *.dx32fsl
 *.dx64fsl
+*.fasl
 *.lx32fsl
 *.lx64fsl
 *.x86f
 *~
 .#*
+system-index.txt
