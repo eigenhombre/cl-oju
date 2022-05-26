@@ -20,7 +20,7 @@ Note that I stick to the functional *interface* of familiar Clojure
 functions, but do not worry about immutable data structures or
 laziness in this library.
 
-Supported operators (if renamed, second entry is the Clojure function name):
+Supported operators:
 
     comment
     drop
@@ -33,7 +33,7 @@ Supported operators (if renamed, second entry is the Clojure function name):
     neg?
     partial
     partition-all
-    partition-n   (partition)
+    partition-n   (called "partition" in Clojure)
     pos?
     rand-int
     rand-nth
