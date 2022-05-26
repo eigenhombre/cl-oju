@@ -15,6 +15,7 @@ mean time, this package exports:
 #+BEGIN_SRC
 comment
 drop
+filter
 frequencies
 group-by
 interleave
