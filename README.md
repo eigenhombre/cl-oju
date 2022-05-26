@@ -11,8 +11,16 @@
 `cl-oju`: a few Clojure idioms I missed from Common Lisp (a few of which I'm
 still getting used to the standard CL idiom for).
 
-Probably there are better libraries than this you should use; in the
-mean time, this package exports:
+If you're coming from Clojure, it may be better to learn "the Common
+Lisp way" of doing things than to rely on these functions; but this
+library can still be a reference point to see *a* way of doing things
+you're used to.
+
+Note that I stick to the functional *interface* of familiar Clojure
+functions, but do not worry about immutable data structures or
+laziness in this library.
+
+Supported operators:
 
     comment
     drop
