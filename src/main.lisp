@@ -123,5 +123,6 @@
 (defun pos? (n) (< 0 n))
 (defun neg? (n) (< n 0))
 
+;; You should just use `remove-if-not`!
 (defun filter (f l)
-  (loop for x in l when (funcall f x) collect x))
+  (remove-if-not f l))
