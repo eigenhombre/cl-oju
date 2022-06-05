@@ -33,6 +33,7 @@ Supported operators:
     neg?
     partial
     partition-all
+    partition-by
     partition-n   (called "partition" in Clojure)
     pos?
     rand-int
@@ -43,6 +44,7 @@ Supported operators:
     sort-by
     spit
     take
+    take-while
 
 # Usage
 

@@ -90,3 +90,25 @@
              (cl-oju:filter (constantly t)
                             (cl-oju:range 10))))
   (is (equal '(1 3 5) (cl-oju:filter #'oddp (cl-oju:range 6)))))
+
+(test take-while
+  (is (null (cl-oju:take-while #'evenp ())))
+  (is (equal '(0)
+             (cl-oju:take-while #'evenp (cl-oju:range 3))))
+  (let ((f (lambda (x) (< x 3))))
+    (is (equal '(0 1 2)
+               (cl-oju:take-while f (cl-oju:range 100))))))
+
+(test partition-by
+  (is (null (cl-oju:partition-by #'evenp ())))
+  (is (equal '((0) (1) (2))
+             (cl-oju:partition-by #'evenp
+                                  (cl-oju:range 3))))
+  (is (equal '((0) (1) (2))
+             (cl-oju:partition-by #'oddp
+                                  (cl-oju:range 3))))
+  (is (equal '((a a a) (b) (c c c) (b) (a a a))
+             (cl-oju:partition-by
+              (lambda (x) (eq 'b x))
+              '(a a a b c c c b a a a)))))
+

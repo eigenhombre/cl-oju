@@ -12,6 +12,7 @@
    :neg?
    :partial
    :partition-all
+   :partition-by
    :partition-n
    :pos?
    :rand-int
@@ -21,4 +22,5 @@
    :sort-by
    :slurp
    :spit
-   :take))
+   :take
+   :take-while))

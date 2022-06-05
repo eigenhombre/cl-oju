@@ -126,3 +126,22 @@
 ;; You should just use `remove-if-not`!
 (defun filter (f l)
   (remove-if-not f l))
+
+(defun take-while (f l)
+  (loop for x in l
+        with ret
+        do (progn
+             (when (not (funcall f x))
+               (return (nreverse ret)))
+             (setq ret (cons x ret)))
+        finally (return l)))
+
+(defun partition-by (f l)
+  (when l
+    (let* ((fst (first l))
+           (fv (funcall f fst))
+           (run (cons fst
+                      (take-while (lambda (x)
+                                    (equal fv (funcall f x)))
+                                  (rest l)))))
+      (cons run (partition-by f (nthcdr (length run) l))))))
