@@ -22,5 +22,6 @@
    :sort-by
    :slurp
    :spit
+   :str
    :take
    :take-while))

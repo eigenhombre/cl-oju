@@ -14,7 +14,8 @@ still getting used to the standard CL idiom for).
 If you're coming from Clojure, it may be better to learn "the Common
 Lisp way" of doing things than to rely on these functions; but this
 library can still be a reference point to see *a* way of doing things
-you're used to.
+you're used to.  There are also much better utility libraries out there;
+see, for example, [Serapeum](https://github.com/ruricolist/serapeum).
 
 Note that I stick to the functional *interface* of familiar Clojure
 functions, but do not worry about immutable data structures or
@@ -43,6 +44,7 @@ Supported operators:
     slurp
     sort-by
     spit
+    str
     take
     take-while
 

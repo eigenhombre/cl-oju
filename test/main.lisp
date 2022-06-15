@@ -112,3 +112,7 @@
               (lambda (x) (eq 'b x))
               '(a a a b c c c b a a a)))))
 
+(test str
+  (is (equal "" (cl-oju:str)))
+  (is (equal "1" (cl-oju:str 1)))
+  (is (equal "abc" (cl-oju:str "a" "bc"))))

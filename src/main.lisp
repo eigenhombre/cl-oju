@@ -1,5 +1,8 @@
 (in-package :cl-oju)
 
+(defun str (&rest args)
+  (format nil "~{~a~}" args))
+
 (defun slurp (infile)
   (with-open-file (instream infile :direction :input :if-does-not-exist nil)
     (when instream
