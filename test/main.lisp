@@ -53,7 +53,36 @@
              '(("1" 1) ("2" 3))))
   (is (equal (cl-oju:sort-by #'first
                              '(("b" 3) ("a" 1)))
-             '(("a" 1) ("b" 3)))))
+             '(("a" 1) ("b" 3))))
+  (is (equal (cl-oju:sort-by
+              (cl-oju:juxt #'first #'second)
+              '((1 0) (0 0)))
+             '((0 0) (1 0))))
+  (is (equal (cl-oju:sort-by
+              (cl-oju:juxt
+               (lambda (a) (second (assoc 'date a :test #'string=)))
+               (lambda (a) (second (assoc 'account a :test #'string=))))
+              '(((date "2020-01-02")
+                (account "aaa"))
+               ((date "2020-01-01")
+                (account "aaa"))))
+             '(((date "2020-01-01")
+                (account "aaa"))
+               ((date "2020-01-02")
+                (account "aaa")))))
+  (is (equal (cl-oju:sort-by
+              (cl-oju:juxt
+               (lambda (a) (second (assoc 'date a :test #'string=)))
+               (lambda (a) (second (assoc 'account a :test #'string=))))
+              '(((date "2020-01-01")
+                (account "bbb"))
+               ((date "2020-01-01")
+                (account "aaa"))))
+             '(((date "2020-01-01")
+                (account "aaa"))
+               ((date "2020-01-01")
+                (account "bbb"))))))
+
 
 (test group-by
   (is (equal (cl-oju:group-by #'evenp '(1 2 3 4 5 6))

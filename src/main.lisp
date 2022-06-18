@@ -100,8 +100,12 @@
   (declare (ignore ign)))
 
 (defun cmp (a b)
-  (cond ((and (numberp a) (numberp b)) (< a b))
+  (cond ((and (null a) (null b)) nil)
+        ((and (numberp a) (numberp b)) (< a b))
         ((and (stringp a) (stringp b)) (string< a b))
+        ((and (consp a) (consp b))
+         (or (cmp (car a) (car b))
+             (cmp (cdr a) (cdr b))))
         (t (error (format nil "Don't know how to compare ~a and ~a!"
                           a b)))))
 
