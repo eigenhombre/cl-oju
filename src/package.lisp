@@ -10,6 +10,7 @@
    :interpose
    :juxt
    :neg?
+   :not=
    :partial
    :partition-all
    :partition-by

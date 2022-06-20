@@ -32,6 +32,7 @@ Supported operators:
     interpose
     juxt
     neg?
+    not=          (based on #'EQUAL)
     partial
     partition-all
     partition-by
