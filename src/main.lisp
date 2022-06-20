@@ -148,3 +148,6 @@
                                     (equal fv (funcall f x)))
                                   (rest l)))))
       (cons run (partition-by f (nthcdr (length run) l))))))
+
+;; Real Lispers are going to hate me for this:
+(defun not= (a b) (not (equal a b)))

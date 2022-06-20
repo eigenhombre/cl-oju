@@ -120,3 +120,11 @@
   (is (equal "" (str)))
   (is (equal "1" (str 1)))
   (is (equal "abc" (str "a" "bc"))))
+
+(test not=-test
+  (is (not= 0 1))
+  (is (not (not= 1 1)))
+  (is (not= 'a 'b))
+  (is (not (not= 'a 'a)))
+  (is (not (not= '(1 (2 3)) (list 1 (list (+ 1 1) 3)))))
+  (is (not= '(1 (2 3)) (list 1 (list (+ 1 1) 1)))))
