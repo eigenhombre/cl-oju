@@ -8,4 +8,6 @@ sbcl --non-interactive \
      --disable-debugger \
      --eval '(pushnew (truename ".") ql:*local-project-directories*)' \
      --eval '(ql:register-local-projects)' \
-     --eval '(load "test/run.lisp")'
+     --eval '(ql:quickload :cl-oju)' \
+     --eval '(asdf:test-system :cl-oju/test)'
+

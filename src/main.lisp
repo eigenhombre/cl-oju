@@ -18,7 +18,7 @@
 
 (defun range (n &optional m)
   (if m
-      (loop for x from (the fixnum n) upto (1- (the fixnum m))
+      (loop for x from (the fixnum n) below (the fixnum m)
             collect x)
       (loop for x upto (1- (the fixnum n)) collect x)))
 
