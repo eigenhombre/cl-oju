@@ -69,3 +69,15 @@ work in any compliant Common Lisp implementation.  `make test` should
 be sufficient to run the tests.  You can also run them in Docker
 (`make docker`), which is what the CI for this project does.  You'll
 obviously need SBCL, `make` and Docker installed for this.
+
+# License
+
+[MIT](https://github.com/eigenhombre/cl-oju/blob/master/LICENSE)
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
