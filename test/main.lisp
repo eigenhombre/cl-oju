@@ -70,7 +70,25 @@
              '(("a") ("b") ("c"))))
   (is (equal (sort-by (lambda (l) (apply #'+ l))
                       '((-1 2) (1 1 1) (2 0 0)))
-             '((-1 2) (2 0 0) (1 1 1)))))
+             '((-1 2) (2 0 0) (1 1 1))))
+  (is (equal (sort-by #'first '(("b" 3) ("a" 1)))
+             '(("a" 1) ("b" 3))))
+  (is (equal (sort-by (juxt #'first #'second)
+                      '((1 0) (0 0)))
+             '((0 0) (1 0))))
+  (let ((sort-fn (juxt
+                  (lambda (a) (second (assoc 'date a :test #'string=)))
+                  (lambda (a) (second (assoc 'account a :test #'string=))))))
+    (is (equal (sort-by sort-fn
+                        '(((date "D2") (account "aaa"))
+                          ((date "D1") (account "aaa"))))
+               '(((date "D1") (account "aaa"))
+                 ((date "D2") (account "aaa")))))
+    (is (equal (sort-by (juxt sort-fn)
+                        '(((date "D1") (account "bbb"))
+                          ((date "D1") (account "aaa"))))
+               '(((date "D1") (account "aaa"))
+                 ((date "D1") (account "bbb")))))))
 
 (test group-by-test
   (is (equal (group-by #'evenp '(1 2 3 4 5 6))
