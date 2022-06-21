@@ -2,6 +2,7 @@
   (:use :cl :let-plus)
   (:export
    :comment
+   :comp
    :drop
    :filter
    :frequencies

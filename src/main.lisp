@@ -89,7 +89,16 @@
 
 (defun repeatedly (n f)
   (loop repeat (the fixnum n)
-     collect (funcall (the function f))))
+        collect (funcall (the function f))))
+
+;; PG ANSI Common Lisp p. 110 /
+;; https://stackoverflow.com/questions/19424954/compose-in-common-lisp
+(defun comp (&rest fns)
+  (destructuring-bind (fn1 . rest) (reverse fns)
+    #'(lambda (&rest args)
+        (reduce #'(lambda (v f) (funcall f v))
+                rest
+                :initial-value (apply fn1 args)))))
 
 (defun juxt (&rest fs)
   (lambda (x)
@@ -99,14 +108,28 @@
 (defmacro comment (&rest ign)
   (declare (ignore ign)))
 
-(defun cmp (a b)
-  (cond ((and (numberp a) (numberp b)) (< a b))
-        ((and (stringp a) (stringp b)) (string< a b))
-        (t (error (format nil "Don't know how to compare ~a and ~a!"
-                          a b)))))
+;; Clojure's `sort-by` behaves a bit differently than CL's `sort`.
+;; `sort-by` uses `compare`, which, like java.util.Comparable returns
+;; positive, negative or zero integer rather than `t` (for strictly
+;; less than) vs. `nil` (otherwise).
+;; Thanks to @dsletten (David Sletten) for suggesting the following
+;; code / multimethod approach:
+(defgeneric compare< (a b)
+  (:documentation "Determine whether A is less than B in the appropriate sense."))
+(defmethod compare< ((a number) (b number)) (< a b))
+(defmethod compare< ((a string) (b string)) (string< a b))
+(defmethod compare< ((a symbol) (b symbol)) (compare< (symbol-name a) (symbol-name b)))
+(defmethod compare< ((a character) (b character)) (char< a b))
+(defmethod compare< ((a cons) (b cons))
+  (or (compare< (car a) (car b))
+      (and (not (compare< (car b) (car a)))
+           (compare< (cdr a) (cdr b)))))
+(defmethod compare< ((a cons) (b null)) nil)
+(defmethod compare< ((a null) (b cons)) t)
+(defmethod compare< ((a null) (b null)) nil)
 
 (defun sort-by (fn coll)
-  (sort (copy-seq coll) #'cmp :key fn))
+  (sort (copy-seq coll) #'compare< :key fn))
 
 (defun group-by (fn coll)
   (let ((ret (make-hash-table :test #'equal)))

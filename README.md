@@ -24,6 +24,7 @@ laziness in this library.
 Supported operators:
 
     comment
+    comp
     drop
     filter
     frequencies
