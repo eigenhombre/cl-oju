@@ -11,15 +11,22 @@
 `cl-oju`: a few Clojure idioms I missed from Common Lisp (a few of which I'm
 still getting used to the standard CL idiom for).
 
-If you're coming from Clojure, it may be better to learn "the Common
-Lisp way" of doing things than to rely on these functions; but this
-library can still be a reference point to see *a* way of doing things
-you're used to.  There are also much better utility libraries out there;
-see, for example, [Serapeum](https://github.com/ruricolist/serapeum).
+There are many more comprehensive utility libraries out there, such as
+[Serapeum](https://github.com/ruricolist/serapeum).  This one only
+aims to provide fairly simple equivalents to Clojure's core
+collections functions.  Since I frequently reach for these out of
+habit, I wanted a place to put them.  I haven't needed to worry too
+much about comprehensiveness or performance, though PRs to improve
+either will be gratefully reviewed.
 
 Note that I stick to the functional *interface* of familiar Clojure
 functions, but do not worry about immutable data structures or
 laziness in this library.
+
+If you're new to Common Lisp coming from Clojure, it may be better to
+learn "the Common Lisp way" of doing things than to rely on these
+functions; but this library can still be a reference point to see *a*
+way of doing things you're used to.
 
 Supported operators:
 
