@@ -8,16 +8,15 @@
 > sourced (some would say pilfered) from an advanced civilization
 > thirty years in the future (far beyond the late 1980's).
 
-`cl-oju`: a few Clojure idioms I missed from Common Lisp (a few of which I'm
-still getting used to the standard CL idiom for).
+`cl-oju`: a few Clojure idioms I missed from Common Lisp.
 
 There are many more comprehensive utility libraries out there, such as
-[Serapeum](https://github.com/ruricolist/serapeum).  This one only
-aims to provide fairly simple equivalents to Clojure's core
-collections functions.  Since I frequently reach for these out of
-habit, I wanted a place to put them.  I haven't needed to worry too
-much about comprehensiveness or performance, though PRs to improve
-either will be gratefully reviewed.
+[Serapeum](https://github.com/ruricolist/serapeum).  This one is
+focused on a fairly narrow goal: to provide fairly simple equivalents
+to core Clojure functions.  Since I frequently reach for (and write)
+these out of habit, I wanted a place to put them.  I haven't needed to
+worry too much about comprehensiveness or performance, though PRs to
+improve either will be gratefully reviewed.
 
 Note that I stick to the functional *interface* of familiar Clojure
 functions, but do not worry about immutable data structures or

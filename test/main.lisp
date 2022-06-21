@@ -31,8 +31,11 @@
   (is (equal (interpose :sep '(1 2 3)) '(1 :SEP 2 :SEP 3))))
 
 (test interleave-test
+  (is (equal (interleave () ()) ()))
   (is (equal (interleave '(1 2 3) '(:a :b :c))
-             '(1 :a 2 :b 3 :c))))
+             '(1 :a 2 :b 3 :c)))
+  (is (equal (interleave '(1 2) '(:a :b :c))
+             '(1 :a 2 :b))))
 
 (test partition-all-test
   (is (equal (partition-all 2 2 '(a b c d))

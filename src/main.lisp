@@ -54,12 +54,13 @@
     when xs collect sep))
 
 (defun interleave (lst1 lst2)
-  (let ((ret))
-    (loop
-      for l1 in lst1
-      for l2 in lst2
-      do (setf ret (cons l2 (cons l1 ret))))
-    (nreverse ret)))
+  (loop with ret
+        for l1 in lst1
+        for l2 in lst2
+        do
+           (push l1 ret)
+           (push l2 ret)
+        finally (return (nreverse ret))))
 
 (defun partition-all (cell-size step-size lst)
   (loop for cell on lst
