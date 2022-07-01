@@ -13,6 +13,7 @@
 
 (defsystem :cl-oju/test
   :author "John Jacobsen"
+  :version "0.0.1"
   :license "MIT"
   :depends-on (:cl-oju :1am)
   :description "Tests for cl-oju"
