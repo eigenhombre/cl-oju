@@ -59,9 +59,19 @@ Supported operators:
 
 # Usage
 
-This is not on Quicklisp (yet).  Check it out from source and put it in `LISP_HOME`.  Then,
+This is not on Quicklisp (yet; [issue filed](https://github.com/quicklisp/quicklisp-projects/issues/2183)).  In the mean time, you'll need to check this repo out from source and put it in `LISP_HOME`.  Then,
 
-    (ql:quickload 'cl-oju)
+    (ql:quickload :cl-oju)
+
+Example:
+
+    (in-package :cl-oju)
+
+    (mapcar (juxt (comp #'length #'str)
+                  #'identity)
+            (repeatedly 10 (lambda () (rand-int 1000))))
+    ;;=>
+    '((3 717) (3 508) (3 238) (3 366) (2 50) (3 564) (3 395) (2 18) (3 446) (3 935))
 
 # Testing / Building
 
