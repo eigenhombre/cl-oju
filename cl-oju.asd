@@ -7,15 +7,15 @@
   :in-order-to ((asdf:test-op (asdf:test-op :cl-oju/test)))
   :components ((:module "src"
                 :serial t
-                :components
-                ((:file "package")
-                 (:file "main"))))
-  :description "Some Clojure-ish thingies")
+                :components ((:file "package")
+                             (:file "main"))))
+  :description "Common Lisp equivalents of core Clojure functions, especially sequence-related ones")
 
 (defsystem :cl-oju/test
   :author "John Jacobsen"
   :license "MIT"
   :depends-on (:cl-oju :1am)
+  :description "Tests for cl-oju"
   :serial t
   :components ((:module "test"
                 :serial t
