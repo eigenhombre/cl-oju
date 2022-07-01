@@ -93,18 +93,19 @@
                '(((date "D1") (account "aaa"))
                  ((date "D1") (account "bbb")))))))
 
-(test group-by-test
-  (is (equal (group-by #'evenp '(1 2 3 4 5 6))
-             '((NIL (5 3 1)) (T (6 4 2)))))
-  (is (equal (group-by (lambda (x) (nth 5 x))
-                       '((1 _ _ _ _ "x")
-                         (2 _ _ _ _ "y")
-                         (3 _ _ _ _ "x")
-                         (4 _ _ _ _ "y")
-                         (5 _ _ _ _ "x")
-                         (6 _ _ _ _ "y")))
-             '(("x" ((5 _ _ _ _ "x") (3 _ _ _ _ "x") (1 _ _ _ _ "x")))
-               ("y" ((6 _ _ _ _ "y") (4 _ _ _ _ "y") (2 _ _ _ _ "y")))))))
+;; Issue #8:
+;; (test group-by-test
+;;   (is (equal (group-by #'evenp '(1 2 3 4 5 6))
+;;              '((NIL (5 3 1)) (T (6 4 2)))))
+;;   (is (equal (group-by (lambda (x) (nth 5 x))
+;;                        '((1 _ _ _ _ "x")
+;;                          (2 _ _ _ _ "y")
+;;                          (3 _ _ _ _ "x")
+;;                          (4 _ _ _ _ "y")
+;;                          (5 _ _ _ _ "x")
+;;                          (6 _ _ _ _ "y")))
+;;              '(("x" ((5 _ _ _ _ "x") (3 _ _ _ _ "x") (1 _ _ _ _ "x")))
+;;                ("y" ((6 _ _ _ _ "y") (4 _ _ _ _ "y") (2 _ _ _ _ "y")))))))
 
 (test partial-test
   (is (equal (funcall (partial #'+)) 0))
