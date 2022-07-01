@@ -2,7 +2,7 @@
   :version "0.0.1"
   :author "John Jacobsen"
   :license "MIT"
-  :depends-on (:let-plus :1am)
+  :depends-on (:1am)
   :serial t
   :in-order-to ((asdf:test-op (asdf:test-op :cl-oju/test)))
   :components ((:module "src"

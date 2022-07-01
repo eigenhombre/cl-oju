@@ -135,9 +135,8 @@
 (defun group-by (fn coll)
   (let ((ret (make-hash-table :test #'equal)))
     (loop for item in coll do
-      (let+ ((k (funcall fn item))
-             (existing (gethash k ret)))
-        (setf (gethash k ret) (cons item existing))))
+      (let ((k (funcall fn item)))
+        (push item (gethash k ret))))
     (loop for k being the hash-keys in ret using (hash-value v)
           collect (list k v))))
 

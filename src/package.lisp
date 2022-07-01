@@ -1,5 +1,5 @@
 (defpackage cl-oju
-  (:use :cl :let-plus)
+  (:use :cl)
   (:export
    :comment
    :comp
