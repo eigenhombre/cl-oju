@@ -75,11 +75,10 @@ Example:
 
 # Testing / Building
 
-Only tested in SBCL, but the code is general enough that it should
-work in any compliant Common Lisp implementation.  `make test` should
-be sufficient to run the tests.  You can also run them in Docker
-(`make docker`), which is what the CI for this project does.  You'll
-obviously need SBCL, `make` and Docker installed for this.
+`make test` should be sufficient to run the tests using SBCL, or `make
+test-ecl` for ECL.  You can also run them in Docker (`make docker`),
+which is what the CI for this project does.  You'll obviously need
+`make` and Docker installed for this.
 
 # License
 
