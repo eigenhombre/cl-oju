@@ -8,7 +8,8 @@
 > sourced (some would say pilfered) from an advanced civilization
 > thirty years in the future (far beyond the late 1980's).
 
-`cl-oju`: a few Clojure idioms I missed from Common Lisp.
+`cl-oju`: a few idioms, mostly relating to sequences, that I miss
+when writing Common Lisp.
 
 There are many more comprehensive utility libraries out there, such as
 [Serapeum](https://github.com/ruricolist/serapeum).  This one is
