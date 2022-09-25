@@ -19,11 +19,11 @@ these out of habit, I wanted a place to put them.
 
 I haven't needed to worry too much about comprehensiveness or
 performance, though PRs to improve either will be gratefully reviewed.
-I basically add functions/macros here when I reach for them from
-Clojure while working in Common Lisp.
+I typically add these here when I reach for them out of habit while
+working in Common Lisp.
 
 Note that I stick to the functional *interface* of familiar Clojure
-functions, but do not worry about immutable data structures or
+expressions, but do not worry about immutable data structures or
 laziness in this library.
 
 If you're new to Common Lisp coming from Clojure, it may be better to
