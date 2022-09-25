@@ -15,9 +15,12 @@ There are many more comprehensive utility libraries out there, such as
 [Serapeum](https://github.com/ruricolist/serapeum).  This one is
 focused on a fairly narrow goal: to provide fairly simple equivalents
 to core Clojure functions.  Since I frequently reach for (and write)
-these out of habit, I wanted a place to put them.  I haven't needed to
-worry too much about comprehensiveness or performance, though PRs to
-improve either will be gratefully reviewed.
+these out of habit, I wanted a place to put them.
+
+I haven't needed to worry too much about comprehensiveness or
+performance, though PRs to improve either will be gratefully reviewed.
+I basically add functions/macros here when I reach for them from
+Clojure while working in Common Lisp.
 
 Note that I stick to the functional *interface* of familiar Clojure
 functions, but do not worry about immutable data structures or
@@ -36,6 +39,7 @@ Supported operators:
     filter
     frequencies
     group-by
+    if-not
     interleave
     interpose
     juxt
@@ -56,10 +60,16 @@ Supported operators:
     str
     take
     take-while
+    when-not
 
 # Usage
 
-This is not on Quicklisp (yet; [issue filed](https://github.com/quicklisp/quicklisp-projects/issues/2183)).  In the mean time, you'll need to check this repo out from source and put it in `LISP_HOME`.  Then,
+This is not on Quicklisp (yet; [issue
+filed](https://github.com/quicklisp/quicklisp-projects/issues/2183)).
+In the mean time, you can get it from
+[Ultralisp.org](https://ultralisp.org/projects/eigenhombre/cl-oju).
+Or, you can check this repo out from source and put it in `LISP_HOME`.
+Then,
 
     (ql:quickload :cl-oju)
 

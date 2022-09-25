@@ -7,6 +7,7 @@
    :filter
    :frequencies
    :group-by
+   :if-not
    :interleave
    :interpose
    :juxt
@@ -26,4 +27,5 @@
    :spit
    :str
    :take
-   :take-while))
+   :take-while
+   :when-not))

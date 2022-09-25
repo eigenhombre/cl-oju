@@ -174,3 +174,12 @@
 
 ;; Real Lispers are going to hate me for this:
 (defun not= (a b) (not (equal a b)))
+
+(defmacro if-not (pred then &optional else)
+  `(if (not ,pred)
+       ,then
+       ,else))
+
+(defmacro when-not (pred &rest body)
+  `(when (not ,pred)
+     ,@body))

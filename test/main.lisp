@@ -163,3 +163,12 @@
   (is (not (not= 'a 'a)))
   (is (not (not= '(1 (2 3)) (list 1 (list (+ 1 1) 3)))))
   (is (not= '(1 (2 3)) (list 1 (list (+ 1 1) 1)))))
+
+(test if-not-test
+  (is (equal t (if-not nil t (/ 1 0))))
+  (is (equal t (if-not nil t)))
+  (is (equal 'foo (if-not t (/ 1 0) 'foo))))
+
+(test when-not-test
+  (is (not (when-not t 3 4)))
+  (is (= 4 (when-not () 3 4))))
