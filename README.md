@@ -64,12 +64,8 @@ Supported operators:
 
 # Usage
 
-This is not on Quicklisp (yet; [issue
-filed](https://github.com/quicklisp/quicklisp-projects/issues/2183)).
-In the mean time, you can get it from
-[Ultralisp.org](https://ultralisp.org/projects/eigenhombre/cl-oju).
-Or, you can check this repo out from source and put it in `LISP_HOME`.
-Then,
+Available on [Quicklisp](https://quicklisp.org) or
+[Ultralisp](https://ultralisp.org/projects/eigenhombre/cl-oju):
 
     (ql:quickload :cl-oju)
 
