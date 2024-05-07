@@ -19,7 +19,7 @@ these out of habit, I wanted a place to put them.
 
 I haven't needed to worry too much about comprehensiveness or
 performance, though PRs to improve either will be gratefully reviewed.
-I typically add these here when I reach for them out of habit while
+I typically add functions here when I reach for them out of habit while
 working in Common Lisp.
 
 Note that I stick to the functional *interface* of familiar Clojure
