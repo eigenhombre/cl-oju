@@ -67,7 +67,7 @@
         by #'(lambda (lst1) (nthcdr step-size lst1))
         collect (take cell-size cell)))
 
-(defun partition-n (cell-size step-size lst)
+(defun clj-partition (cell-size step-size lst)
   (let ((ret nil))
     (loop for cell on lst
           by #'(lambda (lst1) (nthcdr step-size lst1))
@@ -76,6 +76,10 @@
                         (the fixnum cell-size))
                  (push (take cell-size cell) ret))))
     (nreverse ret)))
+
+;; The above used to be called `partition-n`:
+(defun partition-n (cell-size step-size lst)
+  (clj-partition cell-size step-size lst))
 
 ;; Adapted from https://codereview.stackexchange.com/a/223128:
 (defun frequencies (lst)
@@ -183,3 +187,16 @@
 (defmacro when-not (pred &rest body)
   `(when (not ,pred)
      ,@body))
+
+
+;; Possibly crude implementation, will revisit as needed:
+(defun print-clj (&rest args)
+  (loop for arg in args
+        for first = t then nil
+        do (when (not first)
+             (princ " "))
+           (format t "~a" arg)))
+
+(defun println (&rest args)
+  (apply print-clj args)
+  (format t "~%"))

@@ -48,8 +48,11 @@ Supported operators:
     partial
     partition-all
     partition-by
-    partition-n   (called "partition" in Clojure)
+    clj-partition (called "partition" in Clojure;
+                   also aliased to "partition-n")
     pos?
+    clj-print     (called "print" in Clojure)
+    println
     rand-int
     rand-nth
     range

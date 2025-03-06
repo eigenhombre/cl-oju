@@ -17,7 +17,10 @@
    :partition-all
    :partition-by
    :partition-n
+   :clj-partition
    :pos?
+   :clj-print
+   :println
    :rand-int
    :rand-nth
    :range

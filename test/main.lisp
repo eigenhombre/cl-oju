@@ -43,10 +43,10 @@
   (is (equal (partition-all 2 1 '(a b c d))
              '((a b) (b c) (c d) (d)))))
 
-(test partition-n-test
-  (is (equal (partition-n 2 2 '(a b c d))
+(test clj-partition-test
+  (is (equal (clj-partition 2 2 '(a b c d))
              '((a b) (c d))))
-  (is (equal (partition-n 2 1 '(a b c d))
+  (is (equal (clj-partition 2 1 '(a b c d))
              '((a b) (b c) (c d)))))
 (test juxt-test
   (is (equal (funcall (juxt #'car #'cdr) '(1 2 3))
