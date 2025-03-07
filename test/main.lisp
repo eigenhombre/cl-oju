@@ -172,3 +172,25 @@
 (test when-not-test
   (is (not (when-not t 3 4)))
   (is (= 4 (when-not () 3 4))))
+
+(test if-let-test
+  (is (equal 1 (if-let (x (car '(1 2 3)))
+                 x
+                 2)))
+  (is (equal '(42 38)
+             (if-let (x 42)
+               (if-let (y 38)
+                 (list x y)
+                 :nope)
+               :nope)))
+  (is (equal '(42 38)
+             ;; From Fogus:
+             (if-let (x 42)
+               (if-let (y 38)
+                 (list x y)))))
+  (is (equal :nope
+             (if-let (x nil)
+               3
+               :nope)))
+  (is (null (if-let (x nil)
+              3))))

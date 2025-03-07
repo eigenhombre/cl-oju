@@ -200,3 +200,19 @@
 (defun println (&rest args)
   (apply #'clj-print args)
   (format t "~%"))
+
+;; From PG "On Lisp":
+(defmacro with-gensyms (syms &body body)
+  `(let ,(mapcar #'(lambda (s)
+                     `(,s (gensym)))
+          syms)
+     ,@body))
+
+;; Adapted from David Sletten:
+(defmacro if-let ((var test) then &optional else)
+  (with-gensyms (result)
+    `(let ((,result ,test))
+       (if ,result
+           (let ((,var ,result))
+             ,then)
+           ,else))))

@@ -39,6 +39,7 @@ Supported operators:
     filter
     frequencies
     group-by
+    if-let
     if-not
     interleave
     interpose
