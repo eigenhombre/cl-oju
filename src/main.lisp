@@ -190,7 +190,7 @@
 
 
 ;; Possibly crude implementation, will revisit as needed:
-(defun print-clj (&rest args)
+(defun clj-print (&rest args)
   (loop for arg in args
         for first = t then nil
         do (when (not first)
@@ -198,5 +198,5 @@
            (format t "~a" arg)))
 
 (defun println (&rest args)
-  (apply print-clj args)
+  (apply #'clj-print args)
   (format t "~%"))
