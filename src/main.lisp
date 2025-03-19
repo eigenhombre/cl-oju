@@ -92,6 +92,9 @@
 
 (defun rand-int (n) (random (the fixnum n)))
 
+(defun repeat (n x)
+  (loop repeat (the fixnum n) collect x))
+
 (defun repeatedly (n f)
   (loop repeat (the fixnum n)
         collect (funcall (the function f))))

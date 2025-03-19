@@ -57,6 +57,7 @@ Supported operators:
     rand-int
     rand-nth
     range
+    repeat
     repeatedly
     slurp
     sort-by

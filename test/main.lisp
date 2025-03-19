@@ -194,3 +194,11 @@
                :nope)))
   (is (null (if-let (x nil)
               3))))
+
+(test repeat-test
+  (is (equal () (repeat 0 '*)))
+  (is (equal '(* * *) (repeat 3 '*))))
+
+(test repeatedly-test
+  (is (equal () (repeatedly 0 (constantly '*))))
+  (is (equal '(* * *) (repeatedly 3 (constantly '*)))))

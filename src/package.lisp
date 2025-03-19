@@ -25,6 +25,7 @@
    :rand-int
    :rand-nth
    :range
+   :repeat
    :repeatedly
    :sort-by
    :slurp
