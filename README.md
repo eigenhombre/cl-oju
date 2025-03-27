@@ -66,6 +66,7 @@ Supported operators:
     take
     take-while
     when-not
+    with-out-str
 
 # Usage
 

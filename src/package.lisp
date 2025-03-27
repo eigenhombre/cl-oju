@@ -33,4 +33,5 @@
    :str
    :take
    :take-while
-   :when-not))
+   :when-not
+   :with-out-str))

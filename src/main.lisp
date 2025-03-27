@@ -219,3 +219,8 @@
            (let ((,var ,result))
              ,then)
            ,else))))
+
+(defmacro with-out-str (&body body)
+  `(with-output-to-string (s)
+     (let ((*standard-output* s))
+       ,@body)))

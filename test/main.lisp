@@ -202,3 +202,7 @@
 (test repeatedly-test
   (is (equal () (repeatedly 0 (constantly '*))))
   (is (equal '(* * *) (repeatedly 3 (constantly '*)))))
+
+(test with-out-str-test
+  (is (equal "3" (with-out-str
+                   (clj-print "3")))))
