@@ -3,6 +3,7 @@
   (:export
    :comment
    :comp
+   :distinct
    :drop
    :filter
    :frequencies

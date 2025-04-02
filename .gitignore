@@ -6,4 +6,5 @@
 *.x86f
 *~
 .#*
+.vscode/
 system-index.txt

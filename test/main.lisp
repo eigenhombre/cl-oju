@@ -206,3 +206,9 @@
 (test with-out-str-test
   (is (equal "3" (with-out-str
                    (clj-print "3")))))
+
+(test distinct-test
+  (is (equal () (distinct ())))
+  (is (equal '(1) (distinct '(1))))
+  (is (equal '(1) (distinct '(1 1 1))))
+  (is (equal '(a b c) (distinct '(a b a c a b a b b)))))

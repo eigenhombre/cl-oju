@@ -35,6 +35,7 @@ Supported operators:
 
     comment
     comp
+    distinct
     drop
     filter
     frequencies

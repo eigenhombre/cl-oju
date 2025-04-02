@@ -224,3 +224,15 @@
   `(with-output-to-string (s)
      (let ((*standard-output* s))
        ,@body)))
+
+(defun distinct (coll)
+  "
+  Return a list of the distinct elements in COLL, preserving order
+  "
+  (let ((seen (make-hash-table :test #'equal))
+        (result '()))
+    (dolist (item coll)
+      (unless (gethash item seen)
+        (push item result)
+        (setf (gethash item seen) t)))
+    (nreverse result)))
