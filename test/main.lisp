@@ -25,6 +25,14 @@
   (is (equal (drop 3 (cl-oju:range 10))
              '(3 4 5 6 7 8 9))))
 
+(test drop-while-test
+  (is (equal (drop-while (constantly t) (range 10))
+             ()))
+  (is (equal (drop-while (constantly nil) (range 10))
+             (range 10)))
+  (is (equal (drop-while (lambda (x) (< x 5)) (range 10))
+             '(5 6 7 8 9))))
+
 (test interpose-test
   (is (equal (interpose :sep nil) nil))
   (is (equal (interpose :sep '(1)) '(1)))

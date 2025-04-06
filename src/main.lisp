@@ -236,3 +236,12 @@
         (push item result)
         (setf (gethash item seen) t)))
     (nreverse result)))
+
+(defun drop-while (pred lst)
+  "
+  Consume from and discard items from list so long as `pred`
+  returns truthy.
+  "
+  (loop for rest on lst
+        when (not (funcall pred (first rest)))
+          do (return rest)))

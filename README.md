@@ -37,6 +37,7 @@ Supported operators:
     comp
     distinct
     drop
+    drop-while
     filter
     frequencies
     group-by
