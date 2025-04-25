@@ -28,7 +28,10 @@
       (loop for x in l repeat (the fixnum n) collect x)))
 
 (defun drop (n l)
-  (nthcdr n l))
+  (if (stringp l)
+      (when (< n (length l))
+        (loop for x across (subseq l n) collect x))
+      (nthcdr n l)))
 
 (defun fast-length (coll)
   ;; Is this a good idea?

@@ -22,6 +22,12 @@
              '(#\t #\h #\i #\s #\  #\i #\s #\  #\a))))
 
 (test drop-test
+  (is (equal (drop 2 "Feyd")
+             '(#\y #\d)))
+  (is (equal (drop 4 "Feyd")
+             '()))
+  (is (equal (drop 44 "Feyd")
+             '()))
   (is (equal (drop 3 (cl-oju:range 10))
              '(3 4 5 6 7 8 9))))
 
