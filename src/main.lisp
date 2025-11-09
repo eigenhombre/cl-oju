@@ -39,12 +39,9 @@
       (array-dimension coll 0)
       (length coll)))
 
-(defun rand-nth (l)
-  ;; Not sure how to optimize this: I want to support both lists and
-  ;; arrays:
-  (if (vectorp l)
-      (aref l (random (fast-length l)))
-      (nth (random (fast-length l)) l)))
+(defun rand-nth (seq)
+  (assert (and seq (plusp (length seq))) () "Empty sequence passed to RAND-NTH")
+  (nth (random (length seq)) seq))
 
 (defun interpose (sep coll)
   ;;(cdr (loop for x in coll append (list sep x)))
