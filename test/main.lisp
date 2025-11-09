@@ -226,3 +226,8 @@
   (is (equal '(1) (distinct '(1))))
   (is (equal '(1) (distinct '(1 1 1))))
   (is (equal '(a b c) (distinct '(a b a c a b a b b)))))
+
+(test
+ rand-nth-test
+ ;; Failed in Galax:
+ (rand-nth '(o b a f g k m)))
